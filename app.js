@@ -11,7 +11,8 @@ const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET
 });
-// Retrieve an access token
+
+// Retrieve access token
 spotifyApi
   .clientCredentialsGrant()
   .then(data => spotifyApi.setAccessToken(data.body['access_token']))
@@ -36,6 +37,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/artist-search', (req, res) => {
+  //Query artist search
   spotifyApi.searchArtists(req.query.searchByArtist)
     .then(function (data) {
       res.render('pages/artist-search-results.ejs', { artists: data.body.artists.items })
@@ -45,6 +47,7 @@ app.get('/artist-search', (req, res) => {
 })
 
 app.get('/albums/:id', (req, res) => {
+  //Query albums from artist
   spotifyApi.getArtistAlbums(req.params.id)
     .then(function (data) {
       res.render('pages/albums.ejs', { album: data.body.items })
@@ -56,5 +59,6 @@ app.get('/albums/:id', (req, res) => {
 });
 
 app.get('/album/tracks/:id', (req, res) => {
+  //route to detail page with id for player
   res.render('pages/tracks.ejs', { id: req.params.id })
 })
