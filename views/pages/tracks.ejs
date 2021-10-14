@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song list</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <button onclick="window.location.href='/'">Home</button>
+    <button onclick="history.go(-1)">Back</button>
+    <h1>Song list</h1>
+    <div id="songlist">
+        <iframe src="https://open.spotify.com/embed/album/<%= id %> " width="300" height="380" frameborder="0"
+            allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+</body>
+
+</html>

@@ -5,24 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Artist</title>
+    <title>List Albums</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <button onclick="window.location.href='/'">Home</button>
-    <h1>Search Artist in Spotify</h1>
-    <div id="searchArtists">
-        <% artists.forEach(e => { %>
+    <button onclick="history.go(-1)">Back</button>
+    <h1>List Albums</h1>
+    <div id="albumsByArtist">
+        <% album.forEach(e => { %>
         <figure>
-            <% if (e.images.length > 0) { %>
-            <img src="<%= e.images[0].url %>" alt="<%= e.name %> ">
-            <% } else { %>
-            <img src="" alt="<%= e.name %> ">
+            <% e.images.forEach(se => { %>
+            <% if (se.height == 640) { %>
+            <img src="<%= se.url %> " alt="<%= e.name %> ">
             <% } %>
+            <% }) %>
             <figcaption>
                 <p><%= e.name %> </p>
-                <a href='/albums/<%= e.id %> '>Show Albums</a>
+                <a href='/album/tracks/<%= e.id %> '>Listen Album</a>
             </figcaption>
         </figure>
         <% }) %>
