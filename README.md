@@ -1,1 +1,1 @@
-👀 Spotify Search App - under construction
+👀 Spotify Search App - under construction (non styling)
